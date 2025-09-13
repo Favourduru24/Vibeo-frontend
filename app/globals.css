@@ -3,24 +3,81 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  /* --header-height: 3.5rem; 56px - adjust to match your header */
+  --sidebar-width: 17rem; /* 272px - adjust to match your sidebar */
+
+}
+
+/* WebKit browsers */
+/* For WebKit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 8px; /* Overall scrollbar width */
+}
+
+::-webkit-scrollbar-track {
+  background: #000000; /* Track color */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #666666; /* Thumb color */
+  border-radius: 4px;
+  min-height: 10px; /* Minimum height of the thumb */
+  height: 10px; /* Fixed height of the thumb */
+}
+
+/* For Firefox */
+html {
+  scrollbar-width: thin; /* Can be auto, thin, or none */
+  scrollbar-color: #666666 #000000; /* thumb track */
+}
+
+.theater {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 90vh;
+   display: flex;
+  align-items: center;
+}
+
+video {
+  width: 100%;
+  height: 100%;
+  background: #000;
+}
+
+/* Hide controls when not interacting */
+.video-container:hover .video-controls {
+  opacity: 1 !important;
+}
+
+.like-pulse {
+  animation: like-pulse 0.3s ease;
+  transform-origin: center;
+}
+
+@keyframes like-pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+   --color-black-100:#000000;
+   --color-white-100:#ffffff;
+   --color-white-200:#f1f1f1;
+   --color-gray-100:#ffffff33;
+   --color-gray-200:#ffffff33;
+   --color-gray-400:#212121;
+   --color-border-100:#666666;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #634b4b;
     --foreground: #ededed;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+   background: #000000; 
 }
