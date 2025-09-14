@@ -1,0 +1,319 @@
+'use client'
+import Image from 'next/image'
+import Link from 'next/link'
+import { useGetSavedVideoQuery } from '@/features/save-video/saveVideoApiSlice'
+import { daysAgo } from '@/utils'
+
+const SaveVideo = () => {
+
+   const {data} = useGetSavedVideoQuery()
+
+   console.log({data})
+
+
+   const {ids, entities} = data || {}
+
+
+  //  const {data: short} = useGetShortQuery()
+
+
+  //   console.log({data, short})
+
+  return (
+    <div className='py-5 gap-3 grid xl:gap-4 sm:grid-cols-[repeat(auto-fill,minmax(360px,1fr))] px-5 2xl:px-0'
+    >
+        {/* Begin */}
+           {ids?.length > 0 ? ids.map((id) => {
+             const video = entities[id]
+
+             return (
+               <Link href={`/video/${video?.videoId?._id}`} key={video.id}>
+         <div className='flex flex-col gap-3 mb-4 lg:mb-6'>
+           <div className="h-[16rem] bg-[#ffffff33] rounded-xl">
+            <Image src={video?.videoId?.thumbnailUrl?.cloudinaryUrl} width={500} height={500} alt='video' className='h-full w-full object-cover rounded-xl'/>
+        </div>
+           
+           <div className='flex items-start  gap-3'>
+
+              <div className='w-12 h-12 rounded-full bg-[#ffffff33] whitespace-nowrap shrink-0'>
+                <Image src='/assets/user5.png' width={24} height={24} alt='like' className='size-full'/>
+              </div>
+                 <div className='flex flex-col leading-0 gap-4'>
+                     <p className='text-[18px] text-[#f1f1f1] font-medium leading-6 text-wrap font-sans'>{video?.videoId?.title}</p>
+                       <div className='flex flex-col gap-6'>
+                           <p className='text-[16px] text-white/50'>{video?.userId?.username}</p>
+                     <div className='flex items-center gap-2'>
+                     <p className='text-[16px] text-white/50'>504K<span className='text-[15px]'> views</span></p>
+                     <p className='text-[14px] text-white/50'>{daysAgo(video.createdAt)}</p>
+                     </div>
+                       </div>
+                     
+                 </div>
+           </div>
+          </div>
+          </Link>
+             )
+           }) : ''}
+          {/* End */}
+
+        {/* Begin */}
+        <Link href={`/video/123`}>
+         <div className='flex flex-col gap-3 sm:mb-2 lg:mb-6'>
+           <div className="h-[16rem] bg-[#ffffff33] rounded-xl">
+            <Image src='/assets/auth.png' width={500} height={500} alt='like' className='h-full w-full object-cover rounded-xl'/>
+
+        </div>
+           
+           <div className='flex items-start  gap-3'>
+
+              <div className='w-12 h-12 rounded-full bg-[#ffffff33] whitespace-nowrap shrink-0'>
+                <Image src='/assets/user5.png' width={24} height={24} alt='like' className='size-full'/>
+              </div>
+                 <div className='flex flex-col leading-0 gap-4'>
+                     <p className='text-[18px] text-[#f1f1f1] font-medium leading-6 text-wrap font-sans'>Not just free but also powerful! Use all the paid plan features for free.</p>
+                       <div className='flex flex-col gap-6'>
+                           <p className='text-[16px] text-white/50'>TrulyVisual</p>
+                     <div className='flex items-center gap-2'>
+                     <p className='text-[16px] text-white/50'>504K<span className='text-[15px]'> views</span></p>
+                     <p className='text-[14px] text-white/50'>4 Month ago</p>
+                     </div>
+                       </div>
+                     
+                 </div>
+           </div>
+          </div>
+          </Link>
+          {/* End */}
+                         
+        {/* Begin */}
+         <div className='flex flex-col gap-3 sm:mb-2 lg:mb-6'>
+           <div className="h-[16rem] bg-[#ffffff33] rounded-xl">
+              <Image src='/assets/robot.png' width={500} height={500} alt='like' className='h-full w-full object-cover rounded-xl'/>
+        </div>
+           
+           <div className='flex items-start  gap-3'>
+
+              <div className='w-12 h-12 rounded-full bg-[#ffffff33] whitespace-nowrap shrink-0'>
+                <Image src='/assets/user5.png' width={24} height={24} alt='like' className='size-full'/>
+              </div>
+                 <div className='flex flex-col leading-0 gap-4'>
+                     <p className='text-[18px] text-[#f1f1f1] font-medium leading-6 text-wrap font-sans'>Not just free but also powerful! Use all the paid plan features for free.</p>
+                       <div className='flex flex-col gap-6'>
+                           <p className='text-[16px] text-white/50'>TrulyVisual</p>
+                     <div className='flex items-center gap-2'>
+                     <p className='text-[16px] text-white/50'>504K<span className='text-[15px]'> views</span></p>
+                     <p className='text-[14px] text-white/50'>4 Month ago</p>
+                     </div>
+                       </div>
+                     
+                 </div>
+           </div>
+          </div>
+          {/* End */}
+        {/* Begin */}
+         <div className='flex flex-col gap-3 sm:mb-2 lg:mb-6'>
+           <div className="h-[16rem] bg-[#ffffff33] rounded-xl">
+              <Image src='/assets/ed-tech1.png' width={500} height={500} alt='like' className='h-full w-full object-cover rounded-xl'/>
+        </div>
+           
+           <div className='flex items-start  gap-3'>
+
+              <div className='w-12 h-12 rounded-full bg-[#ffffff33] whitespace-nowrap shrink-0'>
+                <Image src='/assets/user5.png' width={24} height={24} alt='like' className='size-full'/>
+              </div>
+                 <div className='flex flex-col leading-0 gap-4'>
+                     <p className='text-[18px] text-[#f1f1f1] font-medium leading-6 text-wrap font-sans'>Not just free but also powerful! Use all the paid plan features for free.</p>
+                       <div className='flex flex-col gap-6'>
+                           <p className='text-[16px] text-white/50'>TrulyVisual</p>
+                     <div className='flex items-center gap-2'>
+                     <p className='text-[16px] text-white/50'>504K<span className='text-[15px]'> views</span></p>
+                     <p className='text-[14px] text-white/50'>4 Month ago</p>
+                     </div>
+                       </div>
+                     
+                 </div>
+           </div>
+          </div>
+          {/* End */}
+        {/* Begin */}
+         <div className='flex flex-col gap-3 sm:mb-2 lg:mb-6'>
+           <div className="h-[16rem] bg-[#ffffff33] rounded-xl">
+              <Image src='/assets/robot.png' width={500} height={500} alt='like' className='h-full w-full object-cover rounded-xl'/>
+          </div>
+           
+           <div className='flex items-start  gap-3'>
+
+              <div className='w-12 h-12 rounded-full bg-[#ffffff33] whitespace-nowrap shrink-0'>
+                <Image src='/assets/user5.png' width={24} height={24} alt='like' className='size-full'/>
+              </div>
+                 <div className='flex flex-col leading-0 gap-4'>
+                     <p className='text-[18px] text-[#f1f1f1] font-medium leading-6 text-wrap font-sans'>Not just free but also powerful! Use all the paid plan features for free.</p>
+                       <div className='flex flex-col gap-6'>
+                           <p className='text-[16px] text-white/50'>TrulyVisual</p>
+                     <div className='flex items-center gap-2'>
+                     <p className='text-[16px] text-white/50'>504K<span className='text-[15px]'> views</span></p>
+                     <p className='text-[14px] text-white/50'>4 Month ago</p>
+                     </div>
+                       </div>
+                     
+                 </div>
+           </div>
+          </div>
+          {/* End */}
+        {/* Begin */}
+         <div className='flex flex-col gap-3 sm:mb-2 lg:mb-6'>
+           <div className="h-[16rem] bg-[#ffffff33] rounded-xl">
+              <Image src='/assets/auth.png' width={500} height={500} alt='like' className='h-full w-full object-cover rounded-xl'/>
+        </div>
+           
+           <div className='flex items-start  gap-3'>
+
+              <div className='w-12 h-12 rounded-full bg-[#ffffff33] whitespace-nowrap shrink-0'>
+                <Image src='/assets/user5.png' width={24} height={24} alt='like' className='size-full'/>
+              </div>
+                 <div className='flex flex-col leading-0 gap-4'>
+                     <p className='text-[18px] text-[#f1f1f1] font-medium leading-6 text-wrap font-sans'>Not just free but also powerful! Use all the paid plan features for free.</p>
+                       <div className='flex flex-col gap-6'>
+                           <p className='text-[16px] text-white/50'>TrulyVisual</p>
+                     <div className='flex items-center gap-2'>
+                     <p className='text-[16px] text-white/50'>504K<span className='text-[15px]'> views</span></p>
+                     <p className='text-[14px] text-white/50'>4 Month ago</p>
+                     </div>
+                       </div>
+                     
+                 </div>
+           </div>
+          </div>
+          {/* End */}
+        {/* Begin */}
+         <div className='flex flex-col gap-3 sm:mb-2 lg:mb-6'>
+           <div className="h-[16rem] bg-[#ffffff33] rounded-xl">
+              <Image src='/assets/ed-tech1.png' width={500} height={500} alt='like' className='h-full w-full object-cover rounded-xl'/>
+        </div>
+           
+           <div className='flex items-start  gap-3'>
+
+              <div className='w-12 h-12 rounded-full bg-[#ffffff33] whitespace-nowrap shrink-0'>
+                <Image src='/assets/user5.png' width={24} height={24} alt='like' className='size-full'/>
+              </div>
+                 <div className='flex flex-col leading-0 gap-4'>
+                     <p className='text-[18px] text-[#f1f1f1] font-medium leading-6 text-wrap font-sans'>Not just free but also powerful! Use all the paid plan features for free.</p>
+                       <div className='flex flex-col gap-6'>
+                           <p className='text-[16px] text-white/50'>TrulyVisual</p>
+                     <div className='flex items-center gap-2'>
+                     <p className='text-[16px] text-white/50'>504K<span className='text-[15px]'> views</span></p>
+                     <p className='text-[14px] text-white/50'>4 Month ago</p>
+                     </div>
+                       </div>
+                     
+                 </div>
+           </div>
+          </div>
+          {/* End */}
+        {/* Begin */}
+         <div className='flex flex-col gap-3 sm:mb-2 lg:mb-6'>
+           <div className="h-[16rem] bg-[#ffffff33] rounded-xl">
+              <Image src='/assets/robot.png' width={500} height={500} alt='like' className='h-full w-full object-cover rounded-xl'/>
+        </div>
+           
+           <div className='flex items-start  gap-3'>
+
+              <div className='w-12 h-12 rounded-full bg-[#ffffff33] whitespace-nowrap shrink-0'>
+                <Image src='/assets/user5.png' width={24} height={24} alt='like' className='size-full'/>
+              </div>
+                 <div className='flex flex-col leading-0 gap-4'>
+                     <p className='text-[18px] text-[#f1f1f1] font-medium leading-6 text-wrap font-sans'>Not just free but also powerful! Use all the paid plan features for free.</p>
+                       <div className='flex flex-col gap-6'>
+                           <p className='text-[16px] text-white/50'>TrulyVisual</p>
+                     <div className='flex items-center gap-2'>
+                     <p className='text-[16px] text-white/50'>504K<span className='text-[15px]'> views</span></p>
+                     <p className='text-[14px] text-white/50'>4 Month ago</p>
+                     </div>
+                       </div>
+                     
+                 </div>
+           </div>
+          </div>
+          {/* End */}
+        {/* Begin */}
+         <div className='flex flex-col gap-3 sm:mb-2 lg:mb-6'>
+           <div className="h-[16rem] bg-[#ffffff33] rounded-xl">
+              <Image src='/assets/ed-tech1.png' width={500} height={500} alt='like' className='h-full w-full object-cover rounded-xl'/>
+        </div>
+           
+           <div className='flex items-start  gap-3'>
+
+              <div className='w-12 h-12 rounded-full bg-[#ffffff33] whitespace-nowrap shrink-0'>
+                <Image src='/assets/user5.png' width={24} height={24} alt='like' className='size-full'/>
+              </div>
+                 <div className='flex flex-col leading-0 gap-4'>
+                     <p className='text-[18px] text-[#f1f1f1] font-medium leading-6 text-wrap font-sans'>Not just free but also powerful! Use all the paid plan features for free.</p>
+                       <div className='flex flex-col gap-6'>
+                           <p className='text-[16px] text-white/50'>TrulyVisual</p>
+                     <div className='flex items-center gap-2'>
+                     <p className='text-[16px] text-white/50'>504K<span className='text-[15px]'> views</span></p>
+                     <p className='text-[14px] text-white/50'>4 Month ago</p>
+                     </div>
+                       </div>
+                     
+                 </div>
+           </div>
+          </div>
+          {/* End */}
+        {/* Begin */}
+         <div className='flex flex-col gap-3 sm:mb-2 lg:mb-6'>
+           <div className="h-[16rem] bg-[#ffffff33] rounded-xl">
+              <Image src='/assets/robot.png' width={500} height={500} alt='like' className='h-full w-full object-cover rounded-xl'/>
+             
+        </div>
+           
+           <div className='flex items-start  gap-3'>
+
+              <div className='w-12 h-12 rounded-full bg-[#ffffff33] whitespace-nowrap shrink-0'>
+                <Image src='/assets/user5.png' width={24} height={24} alt='like' className='size-full'/>
+              </div>
+                 <div className='flex flex-col leading-0 gap-4'>
+                     <p className='text-[18px] text-[#f1f1f1] font-medium leading-6 text-wrap font-sans'>Not just free but also powerful! Use all the paid plan features for free.</p>
+                       <div className='flex flex-col gap-6'>
+                           <p className='text-[16px] text-white/50'>TrulyVisual</p>
+                     <div className='flex items-center gap-2'>
+                     <p className='text-[16px] text-white/50'>504K<span className='text-[15px]'> views</span></p>
+                     <p className='text-[14px] text-white/50'>4 Month ago</p>
+                     </div>
+                       </div>
+                     
+                 </div>
+           </div>
+          </div>
+          {/* End */}
+        {/* Begin */}
+         <div className='flex flex-col gap-3 sm:mb-2 lg:mb-6'>
+           <div className="h-[16rem] bg-[#ffffff33] rounded-xl">
+              <Image src='/assets/auth.png' width={500} height={500} alt='like' className='h-full w-full object-cover rounded-xl'/>
+        </div>
+           
+           <div className='flex items-start  gap-3'>
+
+              <div className='w-12 h-12 rounded-full bg-[#ffffff33] whitespace-nowrap shrink-0'>
+                <Image src='/assets/user5.png' width={24} height={24} alt='like' className='size-full'/>
+              </div>
+                 <div className='flex flex-col leading-0 gap-4'>
+                     <p className='text-[18px] text-[#f1f1f1] font-medium leading-6 text-wrap font-sans'>Not just free but also powerful! Use all the paid plan features for free.</p>
+                       <div className='flex flex-col gap-6'>
+                           <p className='text-[16px] text-white/50'>TrulyVisual</p>
+                     <div className='flex items-center gap-2'>
+                     <p className='text-[16px] text-white/50'>504K<span className='text-[15px]'> views</span></p>
+                     <p className='text-[14px] text-white/50 '>4 Month ago</p>
+                     </div>
+                       </div>
+                     
+                 </div>
+           </div>
+          </div>
+          {/* End */}
+       </div>
+  )
+}
+
+export default SaveVideo
+
